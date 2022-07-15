@@ -53,6 +53,7 @@ public class Program
         ws.Row(1).Style.Font.Color.SetColor(Color.Blue);
         ws.Row(2).Style.HorizontalAlignment=OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         ws.Row(2).Style.Font.Bold = true;
+        ws.Column(3).Width = 20;
 
         await package.SaveAsync();
     }
