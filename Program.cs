@@ -8,7 +8,11 @@ public class Program
     public static async Task Main(string[] args)
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-        var file = new FileInfo(@"C:\Excel\ExcelDemo.xlsx");
+
+        string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
+        string downloadPath=Path.Combine(userRoot, "Downloads");
+
+        var file = new FileInfo(downloadPath);
 
         var people = GetSetupData();
 
@@ -32,11 +36,15 @@ public class Program
     {
         DeleteIfExists(file);
 
-        using var package = ExcelPackage(file);
+        using var package = new ExcelPackage(file);
 
         var ws = package.Workbook.Worksheets.Add("MainReport");
 
-        var range = ws.Cells["A1"].LoadFromCollection(people)
+        var range = ws.Cells["A1"].LoadFromCollection(people, true);
+
+        range.AutoFitColumns();
+
+        await package.SaveAsync();
     }
 
     private static void DeleteIfExists(FileInfo file)
