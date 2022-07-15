@@ -51,6 +51,7 @@ public class Program
         ws.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
         ws.Row(1).Style.Font.Size = 24;
         ws.Row(1).Style.Font.Color.SetColor(Color.Blue);
+        ws.Row(2).Style.HorizontalAlignment=OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
         await package.SaveAsync();
     }
