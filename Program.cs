@@ -5,14 +5,18 @@ namespace ExcelDemoApp;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         var file = new FileInfo(@"C:\Excel\ExcelDemo.xlsx");
+
+        var people = GetSetupData();
+
+        await SaveExcelFile(people, file);
     }
 
 
-    static List<PersonModel> GetSetupData()
+    private static List<PersonModel> GetSetupData()
     {
         List<PersonModel> output = new()
         {
@@ -22,5 +26,15 @@ public class Program
         };
 
         return output;
+    }
+
+    private static async Task SaveExcelFile(List<PersonModel> people, FileInfo file)
+    {
+        DeleteIfExists(file);
+    }
+
+    private static void DeleteIfExists(FileInfo file)
+    {
+        
     }
 }
