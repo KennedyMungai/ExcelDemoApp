@@ -34,7 +34,9 @@ public class Program
 
         using var package = ExcelPackage(file);
 
-        
+        var ws = package.Workbook.Worksheets.Add("MainReport");
+
+        var range = ws.Cells["A1"].LoadFromCollection(people)
     }
 
     private static void DeleteIfExists(FileInfo file)
