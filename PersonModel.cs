@@ -1,4 +1,6 @@
-public class PersonModel 
+namespace ExcelDemoApp;
+
+public class PersonModel
 {
     public int Id { get; set; }
     public string? FirstName { get; set; }
