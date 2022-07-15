@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using System.IO;
+using System.Drawing;
 
 namespace ExcelDemoApp;
 
@@ -44,9 +45,12 @@ public class Program
 
         range.AutoFitColumns();
 
+        //Code to format the header row
         ws.Cells["A1"].Value = "Our cool report";
         ws.Cells["A1:C1"].Merge = true;
         ws.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+        ws.Row(1).Style.Font.Size = 24;
+        ws.Row(1).Style.Font.Color.SetColor(Color.Blue);
 
         await package.SaveAsync();
     }
