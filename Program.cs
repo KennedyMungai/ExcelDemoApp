@@ -40,7 +40,7 @@ public class Program
 
         var ws = package.Workbook.Worksheets.Add("MainReport");
 
-        var range = ws.Cells["A1"].LoadFromCollection(people, true);
+        var range = ws.Cells["A2"].LoadFromCollection(people, true);
 
         range.AutoFitColumns();
 
