@@ -32,10 +32,9 @@ public class Program
     {
         DeleteIfExists(file);
 
-        using (var package = new ExcelPackage())
-        {
-            
-        }
+        using var package = ExcelPackage(file);
+
+        
     }
 
     private static void DeleteIfExists(FileInfo file)
