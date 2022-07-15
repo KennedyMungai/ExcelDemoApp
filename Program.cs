@@ -31,10 +31,18 @@ public class Program
     private static async Task SaveExcelFile(List<PersonModel> people, FileInfo file)
     {
         DeleteIfExists(file);
+
+        using (var package = new ExcelPackage())
+        {
+            
+        }
     }
 
     private static void DeleteIfExists(FileInfo file)
     {
-        
+        if (file.Exists)
+        {
+            file.Delete();
+        }
     }
 }
