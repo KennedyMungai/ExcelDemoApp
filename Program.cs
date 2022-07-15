@@ -46,6 +46,7 @@ public class Program
 
         ws.Cells["A1"].Value = "Our cool report";
         ws.Cells["A1:C1"].Merge = true;
+        ws.Column(1).Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
         await package.SaveAsync();
     }
